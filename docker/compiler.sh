@@ -41,7 +41,7 @@ sed -i 's/^/#/g' /mnt/etc/ld.so.preload
 cp /usr/bin/qemu-arm-static /mnt/usr/bin/
 chroot /mnt sh -c "apt update && apt upgrade -y && apt install -y git libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools"
 chroot /mnt sh -c "if [ ! -d \"/home/pi/pytorch\" ]; cd /home/pi; then git clone --single-branch --branch v1.1.0 --recursive https://github.com/pytorch/pytorch; cd pytorch; git submodule sync; git submodule update --init --recursive; git submodule update --remote third_party/protobuf; fi"
-chroot /mnt sh -c "cd /home/pi/pytorch; NO_CUDA=1 NO_DISTRIBUTED=1 NO_MKLDNN=1 NO_NNPACK=1 NO_QNNPACK=1 python3 setup.py build"
+chroot /mnt sh -c "cd /home/pi/pytorch; NO_CUDA=1 NO_DISTRIBUTED=1 NO_MKLDNN=1 NO_NNPACK=1 NO_QNNPACK=1 python3 setup.py build; NO_CUDA=1 NO_DISTRIBUTED=1 NO_MKLDNN=1 NO_NNPACK=1 NO_QNNPACK=1 python3 setup.py install"
 sync
 
 umount /mnt/sys/
