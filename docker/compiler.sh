@@ -26,12 +26,6 @@ else
     losetup -o $OFFSET $LOOP_DEVICE $IMAGE
 fi
 
-if [[ ! -d "pytorch" ]]
-then
-    git clone --single-branch --branch v1.1.0 --recursive https://github.com/pytorch/pytorch
-    git submodule sync; git submodule update --init --recursive; git submodule update --remote third_party/protobuf
-fi
-
 mount $LOOP_DEVICE /mnt
 mount --bind /dev /mnt/dev/
 mount --bind /sys /mnt/sys/
