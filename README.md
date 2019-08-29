@@ -1,4 +1,4 @@
-# rpi-pytorch-builder
+# raspbian-pytorch-builder
 
 ## Description
 
